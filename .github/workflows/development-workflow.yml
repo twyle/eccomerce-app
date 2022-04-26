@@ -14,7 +14,7 @@ jobs:
         python-version: [3.7, 3.8, 3.9]
     env:
       FLASK_ENV: test
-      MONGO_DB: db
+      MONGODB_DB: db
       MONGODB_USERNAME: user
       MONGODB_PASSWORD: password
       MONGODB_HOST: host
