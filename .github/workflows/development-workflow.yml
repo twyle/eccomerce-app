@@ -3,7 +3,7 @@ on:
 - push
 
 env:
-  APP_NAME: ecommerce
+  APP_NAME: lyle-ecom
 
 jobs:
   Build-Backend:
