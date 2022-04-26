@@ -1,7 +1,6 @@
 """
 Empty module docstring
 """
-from crypt import methods
 from API import app
 
 
