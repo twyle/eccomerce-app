@@ -32,7 +32,7 @@ on:
   workflow_dispatch:
 
 env:
-  APP_NAME: flask-react-blog
+  APP_NAME: flask-eccomerce
 
 jobs:
   Build-Backend:
