@@ -13,13 +13,6 @@ jobs:
         python-version: [3.7, 3.8, 3.9]
     environment: 
       name: Test
-    env:
-      TEST_DB: ${{secrets.TEST_DB}} 
-      TEST_DB_HOST: ${{secrets.TEST_DB_HOST}}
-      MONGO_PORT: ${{secrets.MONGO_PORT}}
-      TEST_DB_USER: ${{secrets.TEST_DB_USER}}
-      TEST_DB_PASSWORD: ${{secrets.TEST_DB_PASSWORD}}
-      FLASK_ENV: ${{secrets.FLASK_ENV}}
     steps:
     - name: Check out code
       uses: actions/checkout@v2
@@ -37,7 +30,14 @@ jobs:
 
     - name: Test with pytest
       run: if [ -d tests ] || [ -d test ]; then python -m pytest; fi
-
+      env:
+        FLASK_ENV: ${{secrets.FLASK_ENV}}
+        TEST_DB: ${{secrets.TEST_DB}} 
+        TEST_DB_HOST: ${{secrets.TEST_DB_HOST}}
+        MONGO_PORT: ${{secrets.MONGO_PORT}}
+        TEST_DB_USER: ${{secrets.TEST_DB_USER}}
+        TEST_DB_PASSWORD: ${{secrets.TEST_DB_PASSWORD}}
+        
   DeployDev:
     name: Deploy to Dev 
     # if: github.event_name == 'pull_request'
