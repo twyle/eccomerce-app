@@ -29,7 +29,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Test with pytest
-      run: if [ -d tests ] || [ -d test ]; then python -m pytest; fi
+      run: if [ -d tests ] || [ -d test ]; then FLASK_ENV=test python -m pytest; fi
         
   DeployDev:
     name: Deploy to Dev 
