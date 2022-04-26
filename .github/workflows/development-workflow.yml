@@ -54,10 +54,15 @@ jobs:
 
     - name: Test Deployment
       run: |
-        sudo apt install curl
+        export FLASK_ENV=development
+        export FLASK_APP=API/__init__.py
         python manage.py run
         curl http://127.0.0.1:5000
 
+  TestDev:
+    name: Test Deployment
+    needs: [Build-Backend]
+    runs-on: ubuntu-latest
         
   DeployDev:
     name: Deploy to Dev 
