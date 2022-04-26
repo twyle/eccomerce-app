@@ -4,8 +4,10 @@ Empty module docstring
 import os
 
 from flask import Flask
+from dotenv import load_dotenv
 
-from API.config import DevelopmentConfig
+
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -16,6 +18,7 @@ def set_flask_environment() -> str:
     Raises
     ------
     KeyError
+        If the FLASK_ENV environment variable is not set.
 
     Returns
     -------
@@ -23,8 +26,12 @@ def set_flask_environment() -> str:
         Flask operating environment i.e development 
     """
 
-    if os.environ['FLASK_ENV'] == 'development':  # pragma: no cover
-        app.config.from_object(DevelopmentConfig)
+    if os.environ['FLASK_ENV'] == 'production':  # pragma: no cover
+        app.config.from_object('API.config.ProductionConfig')
+    elif os.environ['FLASK_ENV'] == 'development':  # pragma: no cover
+        app.config.from_object('API.config.DevelopmentConfig')
+    elif os.environ['FLASK_ENV'] == 'test':
+        app.config.from_object('API.config.TestingConfig')
 
     return os.environ['FLASK_ENV']
 

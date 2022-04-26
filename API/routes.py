@@ -15,4 +15,4 @@ def api_home() -> str:
         A string showing the welcome message : 'Hello from flask e-commerce api!'
     """
 
-    return "Hello from flask e-commerce api!"
+    return "Hello from flask e-commerce api!", 200
