@@ -44,7 +44,7 @@ jobs:
         mongodb-username: ${{env.MONGODB_USERNAME}}
         mongodb-password: ${{env.MONGODB_PASSWORD}}
         mongodb-db: ${{env.MONGODB_DB}}
-         mongodb-port: ${{env.MONGODB_PORT}}
+        mongodb-port: ${{env.MONGODB_PORT}}
 
     - name: Test with pytest
       run: if [ -d tests ] || [ -d test ]; then python -m pytest; fi
