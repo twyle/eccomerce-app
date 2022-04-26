@@ -12,13 +12,15 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8, 3.9]
+        mongodb-version: ['5.0']
+
     env:
       FLASK_ENV: test
       MONGODB_DB: db
       MONGODB_USERNAME: user
       MONGODB_PASSWORD: password
-      MONGODB_HOST: host
-      MONGODB_PORT: port
+      MONGODB_HOST: localhost
+      MONGODB_PORT: 27017
 
     steps:
     - name: Check out code
@@ -34,6 +36,15 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.7.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-username: ${{env.MONGODB_USERNAME}}
+        mongodb-password: ${{env.MONGODB_PASSWORD}}
+        mongodb-db: ${{env.MONGODB_DB}}
+         mongodb-port: ${{env.MONGODB_PORT}}
 
     - name: Test with pytest
       run: if [ -d tests ] || [ -d test ]; then python -m pytest; fi
