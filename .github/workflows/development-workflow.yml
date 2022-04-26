@@ -1,6 +1,7 @@
 name: "Development Build"
 on: 
-- push
+  push:
+    branches: [ development ]
 
 env:
   APP_NAME: lyle-ecom
