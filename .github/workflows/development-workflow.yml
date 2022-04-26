@@ -51,6 +51,13 @@ jobs:
 
     - name: Test with pytest
       run: if [ -d tests ] || [ -d test ]; then python -m pytest; fi
+
+    - name: Test Deployment
+      run: |
+        sudo apt install curl
+        python manage.py run
+        curl http://127.0.0.1:5000
+
         
   DeployDev:
     name: Deploy to Dev 
