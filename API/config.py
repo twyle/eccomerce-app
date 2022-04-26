@@ -14,18 +14,19 @@ class BaseConfig():
     TESTING = False
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
+    MONGODB_CONNECT = True
+
 class TestingConfig(BaseConfig):
     """Empty class docstring"""
 
     DEBUG = True
     TESTING = True
 
-    MONGODB_DB = 'TEST_DB'
+    MONGODB_DB = 'eccom-test'
     MONGODB_HOST = '127.0.0.1'
     MONGODB_PORT = 27017
     MONGODB_USERNAME = ''
     MONGODB_PASSWORD = ''
-    MONGODB_CONNECT = True
 
 
 class DevelopmentConfig(BaseConfig):
