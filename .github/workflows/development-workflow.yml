@@ -14,7 +14,7 @@ jobs:
     environment: 
       name: Test
     env:
-      TEST_DB: ${{secrets.TEST_DB}} 
+      MONGODB_DB: ${{secrets.TEST_DB}} 
       TEST_DB_HOST: ${{secrets.TEST_DB_HOST}}
       MONGO_PORT: ${{secrets.MONGO_PORT}}
       TEST_DB_USER: ${{secrets.TEST_DB_USER}}
