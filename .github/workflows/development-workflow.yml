@@ -19,7 +19,7 @@ jobs:
       MONGO_PORT: ${{secrets.MONGO_PORT}}
       TEST_DB_USER: ${{secrets.TEST_DB_USER}}
       TEST_DB_PASSWORD: ${{secrets.TEST_DB_PASSWORD}}
-      FLASK_ENV: ${{secrets.FLASK_ENV}}
+      FLASK_ENV: test
     steps:
     - name: Check out code
       uses: actions/checkout@v2
