@@ -19,11 +19,11 @@ jobs:
 
     env:
       FLASK_ENV: ${{secrets.FLASK_ENV}}
-      MONGODB_DB: ${{secrets.MONGODB_DB}}
-      MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
-      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
-      MONGODB_HOST: ${{secrets.MONGODB_HOST}}
-      MONGODB_PORT: ${{secrets.MONGODB_PORT}}
+      MONGODB_DB_TEST: ${{secrets.MONGODB_DB}}
+      MONGODB_USERNAME_TEST: ${{secrets.MONGODB_USERNAME}}
+      MONGODB_PASSWORD_TEST: ${{secrets.MONGODB_PASSWORD}}
+      MONGODB_HOST_TEST: ${{secrets.MONGODB_HOST}}
+      MONGODB_PORT_TEST: ${{secrets.MONGODB_PORT}}
 
     steps:
     - name: Check out code
@@ -44,10 +44,10 @@ jobs:
       uses: supercharge/mongodb-github-action@1.7.0
       with:
         mongodb-version: ${{ matrix.mongodb-version }}
-        mongodb-username: ${{env.MONGODB_USERNAME}}
-        mongodb-password: ${{env.MONGODB_PASSWORD}}
-        mongodb-db: ${{env.MONGODB_DB}}
-        mongodb-port: ${{env.MONGODB_PORT}}
+        mongodb-username: ${{env.MONGODB_USERNAME_TEST}}
+        mongodb-password: ${{env.MONGODB_PASSWORD_TEST}}
+        mongodb-db: ${{env.MONGODB_DB_TEST}}
+        mongodb-port: ${{env.MONGODB_PORT_TEST}}
 
     - name: Test with pytest
       run: if [ -d tests ] || [ -d test ]; then python -m pytest; fi

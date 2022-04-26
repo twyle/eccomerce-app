@@ -4,7 +4,7 @@ from API import set_flask_environment
 def test_set_flask_environment():
     flask_env = set_flask_environment()
     assert type(flask_env) is str
-    #assert flask_env in ['development', 'production', 'test']
+    #sassert flask_env in ['development', 'production', 'test']
 
 
 def test_home(client):

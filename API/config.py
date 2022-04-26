@@ -22,11 +22,11 @@ class TestingConfig(BaseConfig):
     DEBUG = True
     TESTING = True
 
-    MONGODB_DB = os.environ['MONGODB_DB']
-    MONGODB_HOST = os.environ['MONGODB_HOST']
-    MONGODB_PORT = os.environ['MONGODB_PORT']
-    MONGODB_USERNAME = os.environ['MONGODB_USERNAME']
-    MONGODB_PASSWORD = os.environ['MONGODB_PASSWORD']
+    MONGODB_DB = os.environ['MONGODB_DB_TEST']
+    MONGODB_HOST = os.environ['MONGODB_HOST_TEST']
+    MONGODB_PORT = os.environ['MONGODB_PORT_TEST']
+    MONGODB_USERNAME = os.environ['MONGODB_USERNAME_TEST']
+    MONGODB_PASSWORD = os.environ['MONGODB_PASSWORD_TEST']
 
 
 class DevelopmentConfig(BaseConfig):
@@ -37,12 +37,11 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     TESTING = False
 
-    MONGODB_DB = 'flask-react-blog-simple-dev'
-    MONGODB_HOST = '127.0.0.1'
-    MONGODB_PORT = 27017
-    MONGODB_USERNAME = ''
-    MONGODB_PASSWORD = ''
-    MONGODB_CONNECT = True
+    MONGODB_DB = os.environ['MONGODB_DB_DEV']
+    MONGODB_HOST = os.environ['MONGODB_HOST_DEV']
+    MONGODB_PORT = os.environ['MONGODB_PORT_DEV']
+    MONGODB_USERNAME = os.environ['MONGODB_USERNAME_DEV']
+    MONGODB_PASSWORD = os.environ['MONGODB_PASSWORD_DEV']
 
 
 class ProductionConfig(BaseConfig):
@@ -53,9 +52,8 @@ class ProductionConfig(BaseConfig):
     DEBUG = False
     TESTING = False
 
-    MONGODB_DB = 'flask-react-blog-simple-prod'
-    MONGODB_HOST = 'mongodb+srv://cluster0.ctzy7.mongodb.net/'
-    MONGODB_PORT = 27017
-    MONGODB_USERNAME = 'flask-api'
-    MONGODB_PASSWORD = 'flask-api'
-    MONGODB_CONNECT = True
+    MONGODB_DB = os.environ['MONGODB_DB_PROD']
+    MONGODB_HOST = os.environ['MONGODB_HOST_PROD']
+    MONGODB_PORT = os.environ['MONGODB_PORT_PROD']
+    MONGODB_USERNAME = os.environ['MONGODB_USERNAME_PROD']
+    MONGODB_PASSWORD = os.environ['MONGODB_PASSWORD_PROD']
