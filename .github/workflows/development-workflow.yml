@@ -60,6 +60,15 @@ jobs:
       matrix:
         python-version: [3.7]
         mongodb-version: ['5.0']
+
+    env:
+      FLASK_ENV: development
+      MONGODB_DB: eccom-dev
+      MONGODB_USERNAME: eccom-dev
+      MONGODB_PASSWORD: eccom-dev
+      MONGODB_HOST: 127.0.0.1
+      MONGODB_PORT: 27017
+
     steps:
     - name: Check out code
       uses: actions/checkout@v2
@@ -75,17 +84,26 @@ jobs:
         if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+    - name: Start MongoDB
+      uses: supercharge/mongodb-github-action@1.7.0
+      with:
+        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-username: ${{env.MONGODB_USERNAME}}
+        mongodb-password: ${{env.MONGODB_PASSWORD}}
+        mongodb-db: ${{env.MONGODB_DB}}
+        mongodb-port: ${{env.MONGODB_PORT}}
+
     - name: Test Deployment
       run: |
         export FLASK_ENV=development
         export FLASK_APP=API/__init__.py
-        python manage.py run
-        curl http://127.0.0.1:5000
+        # python manage.py run
+        # curl http://127.0.0.1:5000
         
   DeployDev:
     name: Deploy to Dev 
     # if: github.event_name == 'pull_request'
-    needs: [Build-Backend]
+    needs: [TestDev]
     runs-on: ubuntu-latest
     environment: 
       name: Development
