@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.7, 3.8, 3.9]
         mongodb-version: ['5.0']
 
     environment: 
       name: Test
 
     env:
-      FLASK_ENV: ${{secrets.FLASK_ENV}}
+      FLASK_ENV: test
       MONGODB_DB_TEST: ${{secrets.MONGODB_DB}}
       MONGODB_USERNAME_TEST: ${{secrets.MONGODB_USERNAME}}
       MONGODB_PASSWORD_TEST: ${{secrets.MONGODB_PASSWORD}}
