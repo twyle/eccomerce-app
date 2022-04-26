@@ -36,7 +36,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name: Test with pytest
-      run: if [ -d tests ] || [ -d test ]; then FLASK_ENV=${{secrets.FLASK_ENV}} TEST_DB=${{secrets.TEST_DB}} EST_DB_HOST=${{secrets.TEST_DB_HOST}} MONGO_PORT=${{secrets.MONGO_PORT}} TEST_DB_USER=${{secrets.TEST_DB_USER}} TEST_DB_PASSWORD={{secrets.TEST_DB_PASSWORD}} python -m pytest; fi
+      run: if [ -d tests ] || [ -d test ]; then FLASK_ENV=test TEST_DB=${{secrets.TEST_DB}} EST_DB_HOST=${{secrets.TEST_DB_HOST}} MONGO_PORT=${{secrets.MONGO_PORT}} TEST_DB_USER=${{secrets.TEST_DB_USER}} TEST_DB_PASSWORD={{secrets.TEST_DB_PASSWORD}} python -m pytest; fi
         
   DeployDev:
     name: Deploy to Dev 
