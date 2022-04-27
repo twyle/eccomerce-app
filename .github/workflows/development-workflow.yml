@@ -99,7 +99,7 @@ jobs:
         export FLASK_APP=API/__init__.py
         python manage.py run &
         sleep 10
-        curl http://127.0.0.1:5000
+        curl http://127.0.0.1:5000 | grep 'Hello from flask e-commerce api!'
         
   DeployDev:
     name: Deploy to Dev 
