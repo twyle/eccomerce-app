@@ -97,8 +97,8 @@ jobs:
       run: |
         export FLASK_ENV=development
         export FLASK_APP=API/__init__.py
-        # python manage.py run
-        # curl http://127.0.0.1:5000
+        python manage.py run &
+        curl http://127.0.0.1:5000
         
   DeployDev:
     name: Deploy to Dev 
